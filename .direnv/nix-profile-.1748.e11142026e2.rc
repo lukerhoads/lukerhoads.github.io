@@ -35,7 +35,7 @@ NIX_CC='/nix/store/nlgyw2fv0cm8rkz8qm1jyw78vyif1bl9-gcc-wrapper-12.2.0'
 export NIX_CC
 NIX_CC_WRAPPER_TARGET_HOST_x86_64_unknown_linux_gnu='1'
 export NIX_CC_WRAPPER_TARGET_HOST_x86_64_unknown_linux_gnu
-NIX_CFLAGS_COMPILE=' -frandom-seed=d99c2hd931 -isystem /nix/store/ygbp2ldc33x8l54mkw9vx2jqfv5dx9n5-nodejs-20.0.0/include -isystem /nix/store/ygbp2ldc33x8l54mkw9vx2jqfv5dx9n5-nodejs-20.0.0/include'
+NIX_CFLAGS_COMPILE=' -frandom-seed=k7i3h09fqx -isystem /nix/store/ygbp2ldc33x8l54mkw9vx2jqfv5dx9n5-nodejs-20.0.0/include -isystem /nix/store/ygbp2ldc33x8l54mkw9vx2jqfv5dx9n5-nodejs-20.0.0/include'
 export NIX_CFLAGS_COMPILE
 NIX_ENFORCE_NO_NATIVE='1'
 export NIX_ENFORCE_NO_NATIVE
@@ -175,7 +175,8 @@ export propagatedNativeBuildInputs
 declare -a propagatedTargetDepFiles=('propagated-target-target-deps' )
 shell='/nix/store/zlf0f88vj30sc7567b80l52d19pbdmy2-bash-5.2-p15/bin/bash'
 export shell
-shellHook=''
+shellHook='npm install
+'
 export shellHook
 stdenv='/nix/store/5s1yg5l36wzgy1dj0vv1ibarc4g7vrdr-stdenv-linux'
 export stdenv
