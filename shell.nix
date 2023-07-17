@@ -7,8 +7,11 @@ let
       buildInputs = [
         nodejs_20
         elmPackages.lamdera
-        elmPackages.elm-pages
         elmPackages.elm-format
       ];
+
+      shellHook = ''
+        npm install
+      '';
   }
 
