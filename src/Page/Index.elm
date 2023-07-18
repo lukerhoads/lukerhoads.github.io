@@ -4,8 +4,8 @@ import Content exposing (BlogPost, about, posts)
 import DataSource exposing (DataSource)
 import Head
 import Head.Seo as Seo
-import Html exposing (a, div, h2, h3, p, text)
-import Html.Attributes exposing (class, href)
+import Html exposing (a, div, h2, h3, img, p, text)
+import Html.Attributes exposing (class, href, src)
 import Markdown
 import Page exposing (Page, StaticPayload)
 import Pages.PageUrl exposing (PageUrl)
@@ -77,25 +77,30 @@ view :
 view _ _ static =
     { title = "Luke Rhoads"
     , body =
-        [ div [ class "main" ]
-            [ p [ class "blog-text" ] <| Markdown.toHtml Nothing static.data.about ]
-        , div
-            [ class "blog" ]
-            [ div
-                [ class "blog-header" ]
-                [ h2 [] [ text "Blog" ] ]
-            , div [ class "blog-items" ]
-                (List.map
-                    (\post ->
-                        a [ href ("blog/" ++ post.slug) ]
-                            [ div []
-                                [ h3 [] [ text post.title ]
-                                , p [] [ text post.description ]
+        [ div [ class "container" ]
+            [ div [ class "about" ]
+                [ p [ class "about-text" ] <| Markdown.toHtml Nothing static.data.about
+                ]
+            , div [ class "blog" ]
+                [ div
+                    [ class "blog-header" ]
+                    [ h2 [] [ text "Blog" ] ]
+                , div [ class "blog-items" ]
+                    (List.map
+                        (\post ->
+                            a [ href ("blog/" ++ post.slug) ]
+                                [ div [ class "blog-item" ]
+                                    [ div [] [ img [ src post.thumbnail ] [] ]
+                                    , div [ class "blog-item-text" ]
+                                        [ h3 [] [ text post.title ]
+                                        , p [] [ text post.description ]
+                                        ]
+                                    ]
                                 ]
-                            ]
+                        )
+                        static.data.posts
                     )
-                    static.data.posts
-                )
+                ]
             ]
         ]
     }

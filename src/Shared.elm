@@ -2,7 +2,8 @@ module Shared exposing (Data, Model, Msg(..), SharedMsg(..), template)
 
 import Browser.Navigation
 import DataSource
-import Html exposing (Html)
+import Html exposing (Html, a, div, h1, img, p, text)
+import Html.Attributes exposing (class, href, src, target)
 import Pages.Flags
 import Pages.PageUrl exposing (PageUrl)
 import Path exposing (Path)
@@ -84,6 +85,32 @@ data =
     DataSource.succeed ()
 
 
+header : Html msg
+header =
+    div [ class "header container" ]
+        [ a [ href "/" ] [ h1 [] [ text "Luke Rhoads" ] ]
+        , div [ class "icons" ]
+            [ div [ class "icon" ]
+                [ a [ href "https://github.com/lukerhoads", target "_blank" ]
+                    [ img [ src "/images/Github.svg" ] []
+                    ]
+                ]
+            , div [ class "icon" ]
+                [ a [ href "https://www.linkedin.com/in/luke-rhoads-283198190", target "_blank" ]
+                    [ img [ src "/images/LinkedIn.svg" ] []
+                    ]
+                ]
+            ]
+        ]
+
+
+footer : Html msg
+footer =
+    div [ class "footer container" ]
+        [ p [] [ text "Built in Elm, with ♡" ]
+        ]
+
+
 view :
     Data
     ->
@@ -95,6 +122,6 @@ view :
     -> View msg
     -> { body : Html msg, title : String }
 view sharedData page model toMsg pageView =
-    { body = Html.div [] pageView.body
+    { body = div [ class "main" ] (header :: pageView.body ++ [ footer ])
     , title = pageView.title
     }
