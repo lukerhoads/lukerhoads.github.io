@@ -42,6 +42,7 @@ h1 {
 a {
   text-decoration: none;
   transition-duration: 0.3s;
+  color: black;
 }
 
 a:visited {
