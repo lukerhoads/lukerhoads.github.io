@@ -100,6 +100,11 @@ header =
                     [ img [ src "/images/LinkedIn.svg" ] []
                     ]
                 ]
+            , div [ class "icon" ]
+                [ a [ href "https://connect.garmin.com/modern/profile/4e9294a9-9886-4b93-9389-649ef03f7342", target "_blank" ]
+                    [ img [ src "/images/Garmin.svg" ] []
+                    ]
+                ]
             ]
         ]
 

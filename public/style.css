@@ -36,9 +36,6 @@ h1, h2, h3, h4, h5, p {
   padding: 0;
 }
 
-h1 {
-}
-
 a {
   text-decoration: none;
   transition-duration: 0.3s;
@@ -99,18 +96,26 @@ a:hover {
     font-size: 2.67vw !important;
   }
 
+  h3 {
+    font-size: 1.56vw !important;
+  }
+
   p {
     font-size: 1.33vw !important;
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
   h1 {
-    font-size: 21.3px !important;
+    font-size: 18px !important;
+  }
+
+  h3 {
+    font-size: 9.36px !important;
   }
 
   p {
-    font-size: 10.67px !important;
+    font-size: 7.98px !important;
   }
 
   .icon, .icon img {

@@ -2,7 +2,7 @@
 title: My beginning experience with Nix
 date: 3/28/2023
 author: Luke Rhoads
-thumbnail: /images/Nix.png
+thumbnail: /images/blog/beginning-nix/Nix.png
 description: Nix can be daunting, with a high learning curve and mysterios errors. Hear my experience wrangling my first NixOS system.
 ---
 # I am excited to preview my first blog post!
