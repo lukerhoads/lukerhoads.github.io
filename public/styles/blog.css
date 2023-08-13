@@ -35,6 +35,10 @@ pre {
     all: revert;
 }
 
+.blog-text img {
+    max-width: 100%;
+}
+
 .blog-title-right {
     margin-left: 10px;
 }
