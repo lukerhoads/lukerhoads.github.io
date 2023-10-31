@@ -4,7 +4,7 @@ import Content exposing (BlogPost)
 import DataSource exposing (DataSource)
 import Head
 import Head.Seo as Seo
-import Html exposing (Html, div, h1, img, p, text)
+import Html exposing (Html, div, h1, h4, img, p, text)
 import Html.Attributes exposing (class, src)
 import Markdown
 import Page exposing (Page, StaticPayload)
@@ -95,7 +95,7 @@ calculateReadingTime txt readingSpeed =
         minutes = 
             if rawMinutes > 0 then rawMinutes else 1
     in
-    [ text "Estimated read time: ", div [] [ text (String.fromInt minutes ++ " minutes") ]]
+    [ h4 [] [ text "Estimated read time: " ], div [] [ h4 [] [ text (String.fromInt minutes ++ " minute" ++ (if minutes > 1 then "s" else ""))  ]]]
 
 
 view :
@@ -112,7 +112,7 @@ view _ _ static =
     , body =
         [ div [ class "container" ]
             [ img [ src post.thumbnail, class "blog-image" ] []
-            , div [ class "blog-title" ] [ 
+            , div [ class "blog-title scale" ] [ 
                 div [ class "blog-title-left" ] [ 
                     h1 [ class "blog-post-title" ] [ text post.title ],
                     p [] [ text post.author ]

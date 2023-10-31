@@ -4,7 +4,7 @@ import Content exposing (BlogPost, about, posts)
 import DataSource exposing (DataSource)
 import Head
 import Head.Seo as Seo
-import Html exposing (a, div, h2, h3, img, p, text)
+import Html exposing (a, div, h2, h3, h4, img, p, text)
 import Html.Attributes exposing (class, href, src)
 import Markdown
 import Page exposing (Page, StaticPayload)
@@ -93,7 +93,7 @@ view _ _ static =
                                     [ div [] [ img [ src post.thumbnail ] [] ]
                                     , div [ class "blog-item-text" ]
                                         [ h3 [] [ text post.title ]
-                                        , p [] [ text post.description ]
+                                        , h4 [] [ text post.description ]
                                         ]
                                     ]
                                 ]
