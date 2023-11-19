@@ -24,3 +24,7 @@
     justify-content: center;
     margin-left: 20px;
 }
+
+.blog-item-text h4 {
+    font-weight: 300;
+}
