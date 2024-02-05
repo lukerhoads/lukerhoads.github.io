@@ -1,5 +1,5 @@
 ---
-title: My Experience With Atlas Shrugged
+title: My Experience with Atlas Shrugged
 date: 10/30/23
 author: Luke Rhoads
 thumbnail: /images/blog/atlas-shrugged/atlas.png

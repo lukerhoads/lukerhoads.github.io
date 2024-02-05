@@ -1,5 +1,5 @@
 ---
-title: My beginning experience with Nix
+title: My Beginning Experience with Nix
 date: 3/28/2023
 author: Luke Rhoads
 thumbnail: /images/blog/beginning-nix/Nix.png
