@@ -3,7 +3,7 @@ title: My Beginning Experience with Nix
 date: 3/28/2023
 author: Luke Rhoads
 thumbnail: /images/blog/beginning-nix/Nix.png
-description: Nix can be daunting, with a high learning curve and mysterios errors. Hear my experience wrangling my first NixOS system.
+description: Nix can be daunting, with a high learning curve and mysterious errors. Hear my experience wrangling my first NixOS system.
 ---
 # Background
 Ever since last year I have been obsessed with "ricing" my Linux machine. Inspired by various reddit communities, I experimented with many operating systems and configurations. Over time, I was better able to configure my system to suit my needs. 
