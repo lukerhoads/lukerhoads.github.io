@@ -11,7 +11,7 @@ Hello! Its been a while. After a failed attempt, I have finally solved a [Jane S
 This months puzzle involved rearranging "f-squares", which are a special type of pentomino shape onto a 17x17 grid with certain constraints. These constraints include row-sums, column-sums, and region-sums. The shapes can be reflected/rotated. Each shape contains in every grid square it occupies the factor it was scaled by.
 
 This is what an F-square looks like: 
-![F-square](/images/blog/jane-street/F-square.png "F-square")
+![F-square](/images/blog/jane-street/2024-1/F-square.png "F-square")
 
 At first, I attempted using Z3. My lack of experience quickly proved to make this strategy very difficult for me. Specifically, I could not find a way to constrain the shapes (though I knew it was possible). 
 
