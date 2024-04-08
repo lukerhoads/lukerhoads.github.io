@@ -31,4 +31,4 @@ When Hank realizes that his desire for Dagny is not to be condemned, he has an e
 # Wrap up
 All in all, I would strongly recommend reading Atlas Shrugged and other works of Rand. While seeming polemic and excessively libertarian, these works actually conform to ancient wisdom in that they venerate hard work and unrelenting effort.
 
-Thanks for taking the time to read!
+Thank you everyone who helped me through the process of writing this essay, and thank you for taking the time to read this!

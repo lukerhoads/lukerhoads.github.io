@@ -111,8 +111,7 @@ view _ _ static =
     { title = post.title
     , body =
         [ div [ class "container" ]
-            [ img [ src post.thumbnail, class "blog-image" ] []
-            , div [ class "blog-title scale" ] [ 
+            [ div [ class "blog-title scale" ] [ 
                 div [ class "blog-title-left" ] [ 
                     h1 [ class "blog-post-title" ] [ text post.title ],
                     p [] [ text post.author ]
