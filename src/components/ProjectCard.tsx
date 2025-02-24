@@ -11,22 +11,22 @@ interface ProjectCardProps {
 export const ProjectCard = ({ title, description, image, onClick }: ProjectCardProps) => {
   return (
     <div
-      className="glass-card overflow-hidden cursor-pointer group transition-colors hover:bg-black/5"
+      className="border border-black/10 bg-white/50 backdrop-blur-[2px] cursor-pointer group"
       onClick={onClick}
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative aspect-[4/3] overflow-hidden border-b border-black/10">
         <img
           src={image}
           alt={title}
-          className="object-cover w-full h-full"
+          className="object-cover w-full h-full filter grayscale hover:grayscale-0 transition-all duration-300"
         />
       </div>
-      <div className="p-6">
-        <h3 className="text-xl font-semibold flex items-center gap-2 mb-2">
+      <div className="p-4">
+        <h3 className="font-semibold flex items-center gap-2 mb-2">
           {title}
-          <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <ArrowUpRight className="w-4 h-4 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all" />
         </h3>
-        <p className="text-black/70">{description}</p>
+        <p className="text-sm text-black/70">{description}</p>
       </div>
     </div>
   );
