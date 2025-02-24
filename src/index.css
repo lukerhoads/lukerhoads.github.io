@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -30,10 +29,12 @@
     @apply bg-background text-foreground antialiased;
     background-size: 15px 15px;
     background-image: var(--blueprint-grid);
+    line-height: 30px;
   }
 
   .project-content {
     @apply prose prose-sm max-w-none prose-headings:text-black prose-p:text-black/80;
+    line-height: 30px;
   }
 }
 

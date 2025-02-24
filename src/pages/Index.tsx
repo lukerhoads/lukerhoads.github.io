@@ -1,6 +1,5 @@
-
 import { ProjectCard } from "@/components/ProjectCard";
-import { Github, Twitter, Linkedin } from "lucide-react";
+import { Layout } from "@/components/Layout";
 
 const projects = [
   {
@@ -8,46 +7,27 @@ const projects = [
     title: "FSAE Racing Vehicle",
     description: "Custom-designed and manufactured racing vehicle components for the Formula SAE competition.",
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
+    handle: "fsae-racing",
   },
   {
     id: 2,
     title: "Precision Machining",
     description: "Innovative machining solutions for complex mechanical components.",
     image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+    handle: "precision-machining",
   },
   {
     id: 3,
     title: "Industrial Design",
     description: "Modern industrial design projects focusing on functionality and aesthetics.",
     image: "https://images.unsplash.com/photo-1527576539890-dfa815648363?auto=format&fit=crop&w=800&q=80",
+    handle: "industrial-design",
   },
 ];
 
 const Index = () => {
   return (
-    <div className="min-h-screen blueprint-grid flex flex-col">
-      <nav className="container py-6 flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">
-          Engineering Portfolio
-        </h1>
-        <div className="flex items-center gap-8">
-          <div className="flex items-center gap-6">
-            <a href="/blog" className="hover:text-black/70 transition-colors">Blog</a>
-          </div>
-          <div className="flex items-center gap-4">
-            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
-              <Github className="w-5 h-5" />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
-              <Twitter className="w-5 h-5" />
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
-              <Linkedin className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
-      </nav>
-
+    <Layout>
       <header className="container py-24">
         <div className="max-w-2xl">
           <p className="text-lg text-black/70">
@@ -71,25 +51,13 @@ const Index = () => {
                 title={project.title}
                 description={project.description}
                 image={project.image}
-                onClick={() => console.log(`Clicked project: ${project.title}`)}
+                onClick={() => window.location.href = "blog/" + project.handle}
               />
             ))}
           </div>
         </div>
       </section>
-
-      <footer className="container py-8 border-t border-black/10">
-        <div className="flex justify-between items-center">
-          <p className="text-sm text-black/70">
-            © {new Date().getFullYear()} Engineering Portfolio. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4">
-            <a href="/blog" className="text-sm text-black/70 hover:text-black transition-colors">Blog</a>
-            <a href="/privacy" className="text-sm text-black/70 hover:text-black transition-colors">Privacy Policy</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </Layout>
   );
 };
 

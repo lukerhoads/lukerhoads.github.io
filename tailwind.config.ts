@@ -1,5 +1,5 @@
-
 import type { Config } from "tailwindcss";
+import typography from '@tailwindcss/typography';
 
 export default {
   darkMode: ["class"],
@@ -35,7 +35,7 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Open Sans", "system-ui", "sans-serif"],
+        sans: ["DM Sans", "system-ui", "sans-serif"],
       },
       keyframes: {
         "fade-in": {
@@ -56,5 +56,8 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    typography,
+    require("tailwindcss-animate"),
+  ],
 } satisfies Config;
