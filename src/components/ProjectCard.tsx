@@ -14,7 +14,7 @@ export const ProjectCard = ({ title, description, image, onClick }: ProjectCardP
     <motion.div
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      className="glass-card rounded-lg overflow-hidden cursor-pointer group"
+      className="glass-card overflow-hidden cursor-pointer group"
       onClick={onClick}
     >
       <div className="relative aspect-[4/3] overflow-hidden">
@@ -25,7 +25,7 @@ export const ProjectCard = ({ title, description, image, onClick }: ProjectCardP
         />
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold flex items-center gap-2 mb-2">
+        <h3 className="text-xl font-display font-semibold flex items-center gap-2 mb-2">
           {title}
           <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
         </h3>

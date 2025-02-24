@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 import { ProjectCard } from "@/components/ProjectCard";
+import { Github, Twitter, Linkedin } from "lucide-react";
 
 const projects = [
   {
@@ -26,14 +27,36 @@ const projects = [
 const Index = () => {
   return (
     <div className="min-h-screen blueprint-grid">
-      <header className="container py-32">
+      <nav className="container py-6 flex items-center justify-between">
+        <h1 className="text-2xl font-display font-semibold">
+          Engineering Portfolio
+        </h1>
+        <div className="flex items-center gap-8">
+          <div className="flex items-center gap-6">
+            <a href="/blog" className="hover:text-black/70 transition-colors">Blog</a>
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
+              <Github className="w-5 h-5" />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
+              <Twitter className="w-5 h-5" />
+            </a>
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
+              <Linkedin className="w-5 h-5" />
+            </a>
+          </div>
+        </div>
+      </nav>
+
+      <header className="container py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="max-w-2xl mx-auto text-center"
+          className="max-w-2xl"
         >
-          <h1 className="text-4xl font-bold mb-6">Mechanical Engineering Portfolio</h1>
+          <h2 className="text-4xl font-display font-bold mb-6">Featured Projects</h2>
           <p className="text-lg text-black/70">
             Precision engineering and innovative design solutions, 
             bringing technical excellence to every project.
