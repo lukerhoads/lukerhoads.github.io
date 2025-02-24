@@ -50,43 +50,33 @@ const Index = () => {
 
       <header className="container py-24">
         <div className="max-w-2xl">
-          <h2 className="text-4xl font-bold mb-6">Featured Projects</h2>
           <p className="text-lg text-black/70">
-            Precision engineering and innovative design solutions, 
-            bringing technical excellence to every project.
-          </p>
-        </div>
-      </header>
-
-      <section className="container py-24 bg-black/5">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">About Me</h2>
-          <p className="text-lg leading-relaxed mb-6">
             I'm a mechanical engineer with a passion for innovative design and precision engineering. 
             With extensive experience in automotive design, industrial manufacturing, and project management, 
             I specialize in turning complex technical challenges into elegant, efficient solutions.
-          </p>
-          <p className="text-lg leading-relaxed">
             My approach combines cutting-edge CAD technology with practical manufacturing knowledge, 
             ensuring that each project not only meets technical specifications but also achieves 
             optimal performance and manufacturability.
           </p>
         </div>
-      </section>
+      </header>
 
-      <main className="container py-24 flex-grow">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              image={project.image}
-              onClick={() => console.log(`Clicked project: ${project.title}`)}
-            />
-          ))}
+      <section className="container py-24 bg-black/5">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-6">Featured Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.id}
+                title={project.title}
+                description={project.description}
+                image={project.image}
+                onClick={() => console.log(`Clicked project: ${project.title}`)}
+              />
+            ))}
+          </div>
         </div>
-      </main>
+      </section>
 
       <footer className="container py-8 border-t border-black/10">
         <div className="flex justify-between items-center">

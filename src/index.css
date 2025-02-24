@@ -28,7 +28,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    background-size: 30px 30px;
+    background-size: 15px 15px;
     background-image: var(--blueprint-grid);
   }
 
@@ -38,7 +38,7 @@
 }
 
 .blueprint-grid {
-  background-size: 30px 30px;
+  background-size: 15px 15px;
   background-image: 
     linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
