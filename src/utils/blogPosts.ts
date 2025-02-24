@@ -1,4 +1,6 @@
 import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
 
 export interface BlogPost {
   slug: string;
@@ -13,14 +15,17 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   const posts: BlogPost[] = [];
   
   // Import all .md files from the blog directory
-  const modules = import.meta.glob('../content/blog/*.md', { query: 'raw' });
-  
+  const modules = import.meta.glob('../content/blog/*.md', { query: '?raw' });
   for (const path in modules) {
     const content = await modules[path]();
     const slug = path.replace('../content/blog/', '').replace('.md', '');
     
     // Parse front matter and content
-    const { data, content: markdown } = matter(content);
+    const { data, content: markdown } = matter(content['default'])
+    const processedContent = await remark()
+      .use(html)
+      .process(markdown);
+    const contentHtml = processedContent.toString();
     
     posts.push({
       slug,
@@ -28,7 +33,7 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
       date: data.date,
       image: data.image,
       excerpt: data.excerpt,
-      content: markdown
+      content: contentHtml
     });
   }
   

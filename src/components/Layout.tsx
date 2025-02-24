@@ -7,7 +7,7 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen blueprint-grid flex flex-col">
-      <nav className="container py-6 flex items-center justify-between">
+      <nav className="container max-w-4xl mx-auto py-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">
           <a href="/" className="hover:text-black/70 transition-colors">
             Luke Rhoads
@@ -31,11 +31,11 @@ export const Layout = ({ children }: LayoutProps) => {
         </div>
       </nav>
 
-      <main>
+      <main className="container max-w-4xl mx-auto">
         {children}
       </main>
 
-      <footer className="container py-8 border-t border-black/10">
+      <footer className="container max-w-4xl mx-auto py-8 border-t border-black/10">
         <div className="flex justify-between items-center">
           <p className="text-sm text-black/70">
             © {new Date().getFullYear()} Engineering Portfolio. All rights reserved.

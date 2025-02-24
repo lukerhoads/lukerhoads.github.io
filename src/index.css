@@ -29,12 +29,52 @@
     @apply bg-background text-foreground antialiased;
     background-size: 15px 15px;
     background-image: var(--blueprint-grid);
-    line-height: 30px;
+    line-height: 30px; /* 2 grid units */
   }
 
   .project-content {
     @apply prose prose-sm max-w-none prose-headings:text-black prose-p:text-black/80;
     line-height: 30px;
+    /* Adjust typography spacing */
+    --tw-prose-body: theme(colors.black/80);
+    --tw-prose-headings: theme(colors.black);
+    
+    /* Make headings and paragraphs align with grid */
+    & h1 {
+      margin-top: 60px;    /* 4 grid units */
+      margin-bottom: 30px; /* 2 grid units */
+      line-height: 45px;   /* 3 grid units */
+    }
+    
+    & h2 {
+      margin-top: 45px;    /* 3 grid units */
+      margin-bottom: 15px; /* 1 grid unit */
+      line-height: 30px;   /* 2 grid units */
+    }
+    
+    & h3 {
+      margin-top: 30px;    /* 2 grid units */
+      margin-bottom: 15px; /* 1 grid unit */
+      line-height: 30px;   /* 2 grid units */
+    }
+    
+    & p {
+      margin-top: 15px;    /* 1 grid unit */
+      margin-bottom: 15px; /* 1 grid unit */
+      line-height: 30px;   /* 2 grid units */
+    }
+    
+    & ul, & ol {
+      margin-top: 15px;    /* 1 grid unit */
+      margin-bottom: 15px; /* 1 grid unit */
+      padding-left: 30px;  /* 2 grid units */
+    }
+    
+    & li {
+      margin-top: 7.5px;   /* 0.5 grid unit */
+      margin-bottom: 7.5px; /* 0.5 grid unit */
+      line-height: 30px;    /* 2 grid units */
+    }
   }
 }
 

@@ -5,10 +5,6 @@ image: https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&
 excerpt: Custom-designed and manufactured racing vehicle components for the Formula SAE competition.
 ---
 
-# FSAE Racing Vehicle Project
-
-Our Formula SAE Racing Vehicle project represents a pinnacle achievement in automotive engineering and team collaboration. This innovative racing vehicle was designed and manufactured specifically for the Formula SAE competition, where engineering students worldwide compete to create the best formula-style racing car.
-
 ## Project Overview
 
 The project involved extensive use of CAD modeling, finite element analysis, and advanced manufacturing techniques. We focused particularly on optimizing the vehicle's aerodynamics and reducing overall weight while maintaining structural integrity.

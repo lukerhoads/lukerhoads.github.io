@@ -28,8 +28,8 @@ const projects = [
 const Index = () => {
   return (
     <Layout>
-      <header className="container py-24">
-        <div className="max-w-2xl">
+      <header className="container py-24 px-0">
+        <div className="max-w-4xl mx-auto">
           <p className="text-lg text-black/70">
             I'm a mechanical engineer with a passion for innovative design and precision engineering. 
             With extensive experience in automotive design, industrial manufacturing, and project management, 
@@ -41,10 +41,10 @@ const Index = () => {
         </div>
       </header>
 
-      <section className="container py-24 bg-black/5">
-        <div className="max-w-3xl mx-auto">
+      <section className="container py-24 px-0">
+        <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-6">Featured Projects</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {projects.map((project) => (
               <ProjectCard
                 key={project.id}

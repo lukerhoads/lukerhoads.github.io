@@ -17,11 +17,10 @@ export const BlogPost = ({ title, date, content, image }: BlogPostProps) => {
       </div>
       <h1 className="text-4xl font-bold mb-4">{title}</h1>
       <p className="text-sm text-black/70 mb-8">{new Date(date).toLocaleDateString()}</p>
-      <div className="prose prose-lg max-w-none">
-        {content.split('\n').map((paragraph, index) => (
-          <p key={index} className="mb-4">{paragraph}</p>
-        ))}
-      </div>
+      <div 
+        className="prose prose-lg max-w-none"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </article>
   );
 }; 
