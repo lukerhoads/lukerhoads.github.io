@@ -1,5 +1,4 @@
 
-import { motion } from "framer-motion";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Github, Twitter, Linkedin } from "lucide-react";
 
@@ -26,9 +25,9 @@ const projects = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen blueprint-grid">
+    <div className="min-h-screen blueprint-grid flex flex-col">
       <nav className="container py-6 flex items-center justify-between">
-        <h1 className="text-2xl font-display font-semibold">
+        <h1 className="text-2xl font-semibold">
           Engineering Portfolio
         </h1>
         <div className="flex items-center gap-8">
@@ -50,39 +49,56 @@ const Index = () => {
       </nav>
 
       <header className="container py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="max-w-2xl"
-        >
-          <h2 className="text-4xl font-display font-bold mb-6">Featured Projects</h2>
+        <div className="max-w-2xl">
+          <h2 className="text-4xl font-bold mb-6">Featured Projects</h2>
           <p className="text-lg text-black/70">
             Precision engineering and innovative design solutions, 
             bringing technical excellence to every project.
           </p>
-        </motion.div>
+        </div>
       </header>
 
-      <main className="container pb-32">
+      <section className="container py-24 bg-black/5">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-6">About Me</h2>
+          <p className="text-lg leading-relaxed mb-6">
+            I'm a mechanical engineer with a passion for innovative design and precision engineering. 
+            With extensive experience in automotive design, industrial manufacturing, and project management, 
+            I specialize in turning complex technical challenges into elegant, efficient solutions.
+          </p>
+          <p className="text-lg leading-relaxed">
+            My approach combines cutting-edge CAD technology with practical manufacturing knowledge, 
+            ensuring that each project not only meets technical specifications but also achieves 
+            optimal performance and manufacturability.
+          </p>
+        </div>
+      </section>
+
+      <main className="container py-24 flex-grow">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
+          {projects.map((project) => (
+            <ProjectCard
               key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <ProjectCard
-                title={project.title}
-                description={project.description}
-                image={project.image}
-                onClick={() => console.log(`Clicked project: ${project.title}`)}
-              />
-            </motion.div>
+              title={project.title}
+              description={project.description}
+              image={project.image}
+              onClick={() => console.log(`Clicked project: ${project.title}`)}
+            />
           ))}
         </div>
       </main>
+
+      <footer className="container py-8 border-t border-black/10">
+        <div className="flex justify-between items-center">
+          <p className="text-sm text-black/70">
+            © {new Date().getFullYear()} Engineering Portfolio. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4">
+            <a href="/blog" className="text-sm text-black/70 hover:text-black transition-colors">Blog</a>
+            <a href="/privacy" className="text-sm text-black/70 hover:text-black transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
