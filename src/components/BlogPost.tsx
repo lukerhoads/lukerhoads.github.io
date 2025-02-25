@@ -7,7 +7,7 @@ interface BlogPostProps {
 
 export const BlogPost = ({ title, date, content, image }: BlogPostProps) => {
   return (
-    <article className="max-w-3xl mx-auto">
+    <article className="w-full max-w-3xl mx-auto">
       <div className="aspect-video w-full overflow-hidden rounded-lg mb-8">
         <img 
           src={image} 
@@ -18,7 +18,7 @@ export const BlogPost = ({ title, date, content, image }: BlogPostProps) => {
       <h1 className="text-4xl font-bold mb-4">{title}</h1>
       <p className="text-sm text-black/70 mb-8">{new Date(date).toLocaleDateString()}</p>
       <div 
-        className="prose prose-lg max-w-none"
+        className="prose prose-lg max-w-none prose-img:border-2 prose-img:border-black"
         dangerouslySetInnerHTML={{ __html: content }}
       />
     </article>

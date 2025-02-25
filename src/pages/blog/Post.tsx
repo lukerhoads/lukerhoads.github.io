@@ -42,7 +42,7 @@ const BlogPostPage = () => {
 
   return (
     <Layout>
-      <div className="container py-24">
+      <div className="py-24">
         <BlogPost
           title={post.title}
           date={post.date}

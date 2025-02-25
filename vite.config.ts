@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 import { NodeGlobalsPolyfillPlugin } from '@esbuild-plugins/node-globals-polyfill'
+import fs from 'fs-extra';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -14,6 +15,7 @@ export default defineConfig(({ mode }) => ({
     react(),
     mode === 'development' &&
     componentTagger(),
+    copyBlogImages()
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -35,3 +37,18 @@ export default defineConfig(({ mode }) => ({
     }
 }
 }));
+
+// Plugin to copy blog images to public folder
+function copyBlogImages() {
+  return {
+    name: 'copy-blog-images',
+    buildStart() {
+      const srcDir = path.resolve(__dirname, 'src/content/blog/images');
+      const destDir = path.resolve(__dirname, 'public/blog-images');
+      
+      if (fs.existsSync(srcDir)) {
+        fs.copySync(srcDir, destDir, { overwrite: true });
+      }
+    }
+  };
+}
