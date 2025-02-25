@@ -1,31 +1,19 @@
 import { ProjectCard } from "@/components/ProjectCard";
 import { Layout } from "@/components/Layout";
-
-const projects = [
-  {
-    id: 1,
-    title: "FSAE Racing Vehicle",
-    description: "Custom-designed and manufactured racing vehicle components for the Formula SAE competition.",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=800&q=80",
-    handle: "fsae-racing",
-  },
-  {
-    id: 2,
-    title: "Precision Machining",
-    description: "Innovative machining solutions for complex mechanical components.",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
-    handle: "precision-machining",
-  },
-  {
-    id: 3,
-    title: "Industrial Design",
-    description: "Modern industrial design projects focusing on functionality and aesthetics.",
-    image: "https://images.unsplash.com/photo-1527576539890-dfa815648363?auto=format&fit=crop&w=800&q=80",
-    handle: "industrial-design",
-  },
-];
+import { getBlogPosts, type BlogPost } from "@/utils/blogPosts";
+import { useEffect, useState } from "react";
 
 const Index = () => {
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      const blogPosts = await getBlogPosts();
+      setPosts(blogPosts);
+    };
+    loadPosts();
+  }, []);
+
   return (
     <Layout>
       <header className="container py-24 px-0">
@@ -45,13 +33,13 @@ const Index = () => {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl font-bold mb-6">Featured Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project) => (
+            {posts.map((post) => (
               <ProjectCard
-                key={project.id}
-                title={project.title}
-                description={project.description}
-                image={project.image}
-                onClick={() => window.location.href = "blog/" + project.handle}
+                key={post.slug}
+                title={post.title}
+                description={post.excerpt}
+                image={post.image}
+                onClick={() => window.location.href = "blog/" + post.slug}
               />
             ))}
           </div>
