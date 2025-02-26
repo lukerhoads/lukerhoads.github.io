@@ -7,7 +7,7 @@ interface BlogPostProps {
 
 export const BlogPost = ({ title, date, content, image }: BlogPostProps) => {
   return (
-    <article className="w-full max-w-3xl mx-auto">
+    <article className="w-full mx-auto">
       <div className="aspect-video w-full overflow-hidden rounded-lg mb-8">
         <img 
           src={image} 

@@ -25,7 +25,7 @@ const Blog = () => {
 
   return (
     <Layout>
-      <div className="container py-24">
+      <div className="py-24">
         <h1 className="text-4xl font-bold mb-12">Engineering Blog</h1>
         <div className="space-y-12">
           {posts.map((post) => (
