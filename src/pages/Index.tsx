@@ -18,13 +18,9 @@ const Index = () => {
     <Layout>
       <header className="container py-24 px-0">
         <div className="max-w-4xl mx-auto">
+          <h2 className="text-2xl font-bold mb-6">Hey, I'm Luke!</h2>
           <p className="text-lg text-black/70">
-            I'm a mechanical engineer with a passion for innovative design and precision engineering. 
-            With extensive experience in automotive design, industrial manufacturing, and project management, 
-            I specialize in turning complex technical challenges into elegant, efficient solutions.
-            My approach combines cutting-edge CAD technology with practical manufacturing knowledge, 
-            ensuring that each project not only meets technical specifications but also achieves 
-            optimal performance and manufacturability.
+            I am a mechanical engineering student at Brown University on the Formula SAE team.
           </p>
         </div>
       </header>

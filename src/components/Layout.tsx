@@ -21,9 +21,6 @@ export const Layout = ({ children }: LayoutProps) => {
             <a href="https://github.com/lukerhoads" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
               <Github className="w-5 h-5" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
-              <Twitter className="w-5 h-5" />
-            </a>
             <a href="https://www.linkedin.com/in/luke-rhoads-283198190/" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
               <Linkedin className="w-5 h-5" />
             </a>
@@ -38,7 +35,7 @@ export const Layout = ({ children }: LayoutProps) => {
       <footer className="container max-w-4xl mx-auto py-8 border-t border-black/10">
         <div className="flex justify-between items-center">
           <p className="text-sm text-black/70">
-            © {new Date().getFullYear()} Engineering Portfolio. All rights reserved.
+            © {new Date().getFullYear()} Luke Rhoads. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <a href="/blog" className="text-sm text-black/70 hover:text-black transition-colors">Blog</a>
