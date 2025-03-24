@@ -2,9 +2,11 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { Layout } from "@/components/Layout";
 import { getBlogPosts, type BlogPost } from "@/utils/blogPosts";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -35,7 +37,7 @@ const Index = () => {
                 title={post.title}
                 description={post.excerpt}
                 image={post.image}
-                onClick={() => window.location.href = "blog/" + post.slug}
+                onClick={() => navigate(`/blog/${post.slug}`)}
               />
             ))}
           </div>
