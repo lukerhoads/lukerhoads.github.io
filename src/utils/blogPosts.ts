@@ -1,7 +1,3 @@
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
-
 export interface BlogPost {
   slug: string;
   title: string;
@@ -11,34 +7,24 @@ export interface BlogPost {
   content: string;
 }
 
+let cachedPosts: BlogPost[] | null = null;
+
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  const posts: BlogPost[] = [];
-  
-  // Import all .md files from the blog directory
-  const modules = import.meta.glob('../content/blog/*.md', { query: '?raw' });
-  for (const path in modules) {
-    const content = await modules[path]();
-    const slug = path.replace('../content/blog/', '').replace('.md', '');
-    
-    // Parse front matter and content
-    const { data, content: markdown } = matter(content['default'])
-    const processedContent = await remark()
-      .use(html)
-      .process(markdown);
-    const contentHtml = processedContent.toString();
-    
-    posts.push({
-      slug,
-      title: data.title,
-      date: data.date,
-      image: data.image,
-      excerpt: data.excerpt,
-      content: contentHtml
-    });
+  if (cachedPosts) {
+    return cachedPosts;
   }
-  
-  // Sort posts by date
-  return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+  try {
+    const response = await fetch('/blog-posts.json');
+    if (!response.ok) {
+      throw new Error('Failed to fetch blog posts');
+    }
+    cachedPosts = await response.json();
+    return cachedPosts;
+  } catch (error) {
+    console.error('Error loading blog posts:', error);
+    return [];
+  }
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {

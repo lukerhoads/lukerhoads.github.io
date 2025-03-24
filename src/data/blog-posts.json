@@ -1,0 +1,10 @@
+[
+  {
+    "slug": "howimat-gear-reducer",
+    "title": "Howimat Gear Reducer",
+    "date": "2025-02-24T00:00:00.000Z",
+    "image": "/images/howimat-gear-reducer/thumbnail.JPG",
+    "excerpt": "3D printed gear reducer using Howimat technology to achieve zero-low backlash.",
+    "content": "<h2>Project Overview</h2>\n<p>The project involved extensive use of CAD modeling, and 3D printing to prototype and finalize the design for a Howimat-inspired gear reducer. The Howimat design uses ball bearings driven by a cam to achieve zero-low backlash in a minimal profile.</p>\n<h2>Project Motivation</h2>\n<p>I am interested in eventually building my own CNC machine. One component of a good CNC machine is a gear reducer with low backlash. I found Dylan Edmiston's <a href=\"https://www.youtube.com/watch?v=bZBH35Yfn6k\">video</a> where he used it in his head-head CNC machine. The Howimat design is also used in the highest end Heller CNC machines as seen <a href=\"https://www.detlevhofmann.de/products/howimat-gear-type-units/?lang=en\">here</a>. I found it interesting how there have been plenty of attempts to make a harmonic drive or cycloidial drive but not a Howimat drive.</p>\n<h2>Key Achievements</h2>\n<ul>\n<li>CAD modelling of advanced shapes, such as the spline and cam</li>\n<li>Section analysis of final model to verify ball bearing movement</li>\n<li>3D printing prototypes and final part</li>\n</ul>\n<h2>Part Drawings</h2>\n<h2>Section Analysis</h2>\n<p><img src=\"/images/howimat-gear-reducer/section-analysis.png\" alt=\"Section Analysis\"></p>\n<h2>Exploded View</h2>\n<p><img src=\"/images/howimat-gear-reducer/exploded-view.png\" alt=\"Exploded View\"></p>\n<h2>Future Work</h2>\n<p>This project is not yet complete. I plan to do the following:</p>\n<ul>\n<li>CNC machining of all parts for increased reliability\n<ul>\n<li>May require 5-axis machining for the fixed spline profile</li>\n</ul>\n</li>\n<li>Test backlash over a range of speeds</li>\n<li>Test torque capacity</li>\n<li>Test precision of the output shaft position</li>\n</ul>\n"
+  }
+]
