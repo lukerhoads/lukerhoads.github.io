@@ -22,7 +22,7 @@ const Index = () => {
         <div className="max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-6">Hey, I'm Luke!</h2>
           <p className="text-lg text-black/70">
-            I am a mechanical engineering student at Brown University on the Formula SAE team.
+            I am a mechanical engineering student at Brown University. Check out the various projects I have worked on, including the drivetrain for the Brown FSAE team and a windsurfing board.
           </p>
         </div>
       </header>

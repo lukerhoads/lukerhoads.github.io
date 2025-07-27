@@ -14,9 +14,6 @@ export const Layout = ({ children }: LayoutProps) => {
           </a>
         </h1>
         <div className="flex items-center gap-8">
-          <div className="flex items-center gap-6">
-            <a href="/blog" className="hover:text-black/70 transition-colors">Blog</a>
-          </div>
           <div className="flex items-center gap-4">
             <a href="https://github.com/lukerhoads" target="_blank" rel="noopener noreferrer" className="hover:text-black/70 transition-colors">
               <Github className="w-5 h-5" />
