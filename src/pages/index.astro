@@ -1,0 +1,24 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectGrid from '../components/ProjectGrid.astro';
+---
+
+<Layout title="Industrial Design Portfolio" description="A curated collection of minimalist industrial design projects">
+  <section class="projects-section">
+    <div class="container">
+      <ProjectGrid />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .projects-section {
+    padding: 0;
+  }
+
+  @media (max-width: 768px) {
+    .projects-section {
+      padding: 0;
+    }
+  }
+</style>
