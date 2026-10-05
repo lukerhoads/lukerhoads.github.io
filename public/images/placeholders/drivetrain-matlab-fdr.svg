@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="1200" height="750" role="img">
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d5dde3" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="750" fill="#f6f7f4"/>
+  <rect width="1200" height="750" fill="url(#grid)"/>
+  <rect x="18" y="18" width="1164" height="714" fill="none" stroke="#7d8b99" stroke-width="2"/>
+  <rect x="26" y="26" width="1148" height="698" fill="none" stroke="#7d8b99" stroke-width="1"/>
+  <g stroke="#3a4856" stroke-width="2" fill="none">
+    <path d="M 18 46 L 18 18 L 46 18"/>
+    <path d="M 1154 18 L 1182 18 L 1182 46"/>
+    <path d="M 18 704 L 18 732 L 46 732"/>
+    <path d="M 1154 732 L 1182 732 L 1182 704"/>
+  </g>
+  
+  <g fill="none" stroke="#7d8b99" stroke-width="2">
+    <path d="M 240 500 L 960 500 L 940 488 M 960 500 L 940 512"/>
+    <path d="M 240 500 L 240 180 L 228 200 M 240 180 L 252 200"/>
+    <path d="M 240 480 C 360 470, 420 430, 500 360 S 700 220, 900 200" stroke="#1b242e" stroke-width="3"/>
+    <path d="M 240 470 C 400 460, 520 400, 640 340 S 820 250, 940 240" stroke="#3a4856"/>
+  </g>
+
+  <text x="600.0" y="632" text-anchor="middle" fill="#4e5d6c" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="18" letter-spacing="3">PLACEHOLDER</text>
+  <text x="600.0" y="678" text-anchor="middle" fill="#1b242e" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="40" font-weight="500">MATLAB — Final drive</text>
+
+</svg>

@@ -15,7 +15,16 @@ import { site, skills } from "../data/content";
     </p>
     <div class="hero-grid">
       <div>
-        <h1>{site.name}</h1>
+        <div class="identity">
+          <img
+            class="portrait"
+            src={site.portrait}
+            alt="Portrait placeholder for Luke Rhoads. Replace public/images/placeholders/portrait.svg."
+            width="160"
+            height="200"
+          />
+          <h1>{site.name}</h1>
+        </div>
         <p class="lede">{site.intro}</p>
         <ul class="past-roles">
           {site.experience.map((item) => <li>{item}</li>)}

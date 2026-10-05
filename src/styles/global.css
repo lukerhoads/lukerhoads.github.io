@@ -265,6 +265,21 @@ main:focus {
   min-width: 0;
 }
 
+.identity {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.1rem;
+}
+
+.portrait {
+  width: 7.5rem;
+  height: 9.25rem;
+  flex: 0 0 auto;
+  object-fit: cover;
+  border: 1px solid var(--line-strong);
+  background: var(--paper-strong);
+}
+
 .lede,
 .page-intro p,
 .block p,
@@ -713,6 +728,11 @@ figcaption strong {
   .page-intro h1,
   .title-block h1 {
     max-width: none;
+  }
+
+  .portrait {
+    width: 5.5rem;
+    height: 6.75rem;
   }
 }
 

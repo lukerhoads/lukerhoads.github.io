@@ -1,5 +1,5 @@
 /**
- * Portfolio copy. Project narratives follow Luke's notes.
+ * Portfolio copy. Project narratives follow Luke's edited notes.
  * Do not add metrics he did not provide.
  */
 
@@ -12,6 +12,7 @@ export const site = {
   location: "Providence, RI",
   graduation: "Expected graduation December 2027",
   priorSchool: "Highland Park High School, Highland Park, class of 2024",
+  portrait: "/images/placeholders/portrait.svg",
   intro:
     "Hey! I'm a Junior studying MechE at Brown. In my free time, I spend time in the Brown Design Workshop as the Brown Formula Racing Engine Lead. Along the way, I've been glad to have worked as the following:",
   experience: [
@@ -36,7 +37,7 @@ export const skills = {
 };
 
 export interface MediaSlot {
-  kind: "Photo" | "CAD" | "Simulation" | "Write-up";
+  kind: "Photo" | "CAD" | "Simulation" | "FEA" | "Hand Calculations" | "Write-up";
   caption: string;
   src?: string;
   alt?: string;
@@ -68,51 +69,59 @@ export const projects: Project[] = [
     sheet: "01",
     featured: true,
     summary:
-      "Rear differential mount, chain tension hardware, suspension and chassis packaging, and the final drive ratio for Brown Formula Racing.",
+      "The system that transmits torque from the engine countershaft to the rear axle, where a clutch-type limited-slip differential biases it between the wheels.",
     role: "Drivetrain Lead",
     organization: "Brown Formula Racing",
     location: "Providence, RI",
     dates: "October 2024 – May 2025",
     tools: ["SolidWorks", "Fusion 360 CAM", "CNC milling", "MATLAB"],
     overview: [
-      "I owned the rear drivetrain: the differential mount, the chain tension hardware, and the packaging against suspension and chassis. Choosing the final drive ratio was part of that job, not a side study.",
-      "The ratio came from point-mass lap simulations in MATLAB. The mount was iterated in SolidWorks for minimum weight under the calculated loads, then the mount and tensioner were cut with Fusion 360 CAM and CNC milling.",
+      "The drivetrain runs from the countershaft sprocket to the rear wheel packages. Critical interfaces include two chassis mounts shared with the engine. Torque goes from the countershaft sprocket to the differential casing, then is biased to the two wheels.",
+      "A good system transmits that torque efficiently and sends more of it to the wheel with traction. It also includes the rear sprocket, which sets the final drive ratio and strongly affects car performance.",
     ],
     roleNotes: [
-      "I was responsible for the rear differential mount: SolidWorks iterations for minimum weight under calculated loads, then Fusion 360 CAM and CNC manufacture of that mount and the chain tension system.",
-      "I also owned the integration with suspension and chassis, including driveshaft clearance in every chain tension configuration, and the final drive ratio decision from the MATLAB lap simulations.",
+      "I owned the two differential mounts, the chain tensioning system, the countershaft sprocket, the axle sprocket, the COTS differential, the inboard tulip assembly, the CV bearings, the driveshafts, and the chain.",
+      "I also owned the suspension and chassis integration, including driveshaft clearance in every chain-tension configuration, and the final drive ratio from the MATLAB lap simulations.",
     ],
     approach: [
-      "Set the load assumptions for the rear differential mount.",
-      "Iterate the mount in SolidWorks for minimum weight under those calculated loads.",
-      "Manufacture the mount and the chain tensioner with Fusion 360 CAM and CNC milling.",
-      "Integrate the drivetrain with suspension and chassis.",
-      "Select the final drive ratio with point-mass lap simulations in MATLAB.",
-      "Check driveshaft clearance across the chain tension configurations that go with that ratio.",
+      "Position the system from the suspension and chassis hardpoints and the chain-tension needs.",
+      "Define the driving load cases, including a clutch dump at max-torque RPM.",
+      "Design the differential mounts and the chain tensioner for those loads.",
+      "Select the final drive ratio with MATLAB point-mass lap simulations.",
+      "Confirm the chosen ratio packages with the selected differential position.",
     ],
     outcomes: [
-      "Rear differential mount designed for minimum weight under the calculated loads, then machined.",
-      "Chain tension adjustment hardware manufactured with the mount.",
-      "Drivetrain integrated with suspension and chassis, with driveshaft clearance held across the chain tension configurations.",
-      "Final drive ratio selected from the point-mass MATLAB lap simulations.",
+      "Differential mounts designed and manufactured for minimum weight under the calculated loads.",
+      "Chain tension hardware manufactured and installed with the mounts.",
+      "Integrated with suspension and chassis, with driveshaft clearance across the tension configurations.",
+      "Final drive ratio selected from the MATLAB point-mass lap simulations.",
     ],
-    mediaNote: "CAD, photos, and the lap-simulation output will be added here.",
+    mediaNote:
+      "Each frame is a placeholder. Replace the file at the same path under public/images/placeholders/.",
     media: [
       {
-        kind: "CAD",
-        caption: "SolidWorks model of the rear differential mounting system. Not yet added.",
+        kind: "FEA",
+        src: "/images/placeholders/drivetrain-fea-diff-mounts.svg",
+        alt: "Placeholder drawing labeled FEA — Diff mounts",
+        caption: "FEA of the differential mounts.",
       },
       {
         kind: "Photo",
-        caption: "Machined mount and chain tension hardware. Not yet added.",
+        src: "/images/placeholders/drivetrain-assembled-on-car.svg",
+        alt: "Placeholder drawing labeled Photo — System on car",
+        caption: "The full system assembled on the car.",
       },
       {
         kind: "Simulation",
-        caption: "MATLAB point-mass lap simulation used for the final drive ratio. Not yet added.",
+        src: "/images/placeholders/drivetrain-matlab-fdr.svg",
+        alt: "Placeholder drawing labeled MATLAB — Final drive",
+        caption: "MATLAB point-mass lap simulation used for the final drive ratio.",
       },
       {
-        kind: "Write-up",
-        caption: "Extended design and manufacturing notes. Not yet added.",
+        kind: "Hand Calculations",
+        src: "/images/placeholders/drivetrain-hand-calcs.svg",
+        alt: "Placeholder drawing labeled Hand calcs",
+        caption: "Hand calculations for the driving load cases.",
       },
     ],
   },
@@ -121,49 +130,54 @@ export const projects: Project[] = [
     title: "FSAE Dynamometer",
     sheet: "02",
     featured: true,
-    summary:
-      "An in-house engine dyno still in progress. Rev 1 ran the engine but could not meet load, rev 2 would not sustain a run, and rev 3 is looking at an eddy brake, possibly with a roller.",
-    role: "Intake/Dyno Lead",
+    summary: "An in-house engine dyno that remains in progress.",
+    role: "Dyno Lead",
     organization: "Brown Formula Racing",
     location: "Providence, RI",
     dates: "June 2025 – present",
-    tools: ["Rev 1 water-brake setup", "Rev 3 eddy brake", "Possible roller"],
+    tools: ["Arduino", "SolidWorks"],
     overview: [
-      "The team is still trying to make an in-house engine dynamometer. Rev 1 and rev 2 did not work out well, and both need modification. The point of the rig is to check steady-state powertrain simulations and measure the engine, and we do not have that yet.",
-      "Rev 3 is in progress. I am looking at an eddy-brake system instead, and possibly a roller, using what the first two builds showed.",
+      "Without an in-house dyno, the team often treats the powertrain as plug-and-play. The goal is to change that by testing on a dyno: steady-state tuning for engine performance, and better digital-twin engine models.",
     ],
     roleNotes: [
-      "As Intake/Dyno Lead I own the dyno program through these revisions: the architecture of each build, the call that rev 1 and rev 2 need to change, and the hardware that has to be designed for the next one.",
-      "Deliverables so far are the rev 1 frame that held the engine outside the car, with fuel, cooling, and the rest of the support systems, and the rev 2 mechanical rework. Rev 3 — an eddy brake, possibly with a roller — is the direction I am driving now. The intake is a separate page.",
+      "As Dyno Lead, I am responsible for building a budget-oriented engine dyno for steady-state tuning.",
     ],
     approach: [
-      "Rev 1: house the engine outside the car with fuel, cooling, and support systems, and try to load it with the water supply on hand.",
-      "Rev 2: correct the mechanical design so the dyno could run for a sustained test.",
-      "Rev 3: move to an eddy-brake system, possibly with a roller, and apply what rev 1 and rev 2 made clear.",
+      "Rev 1: an engine-out aluminum extrusion frame with a fuel tank, radiator, water tank and pump, and a water brake. The engine ran, but the water system could not load-match. The pump was sized from the dyno manual — about 8 psi dynamic at the brake inlet, and 20 psi static maximum. The tank was sized by hand calculation for about 10 minutes of runtime, which came out to 26 gallons. Water-brake control turned out to be hard, and attaching the rig to the car would avoid a separate fuel and cooling system.",
+      "Rev 2: reused many Rev 1 parts. A roll-up frame goes to the rear of the car, attaches to the suspension hardpoints, and chains to the engine sprocket. The frame held the water brake, the drain tank, and the electronics. It was built and tested once. Two small sprockets and a long chain blocked sustained running. A new dyno controller is meant to replace the antiquated outputs in software.",
+      "Rev 3: an eddy brake looks more viable — a power supply and minimal cooling, instead of water management. I am exploring that path now.",
     ],
     outcomes: [
-      "Rev 1 ran the engine outside the car. The water supply never met engine load, so the dyno could not hold the test.",
-      "Rev 2 did not produce sustained dyno running. Mechanical design mistakes mean that revision still needs modification.",
-      "Rev 3 is underway: an eddy brake instead, possibly with a roller. There are no power or torque numbers from this program.",
+      "Rev 1 ran, but the water system never met load.",
+      "Rev 2 never produced a sustained run, which made the switch to an eddy brake clearer.",
+      "Rev 3, the eddy brake, is underway.",
     ],
     mediaNote:
-      "Photos and CAD of the revisions will be added here. No measured power or torque figures are included.",
+      "Each frame is a placeholder. Replace the file at the same path under public/images/placeholders/. No measured power or torque figures are included.",
     media: [
       {
         kind: "Photo",
-        caption: "Rev 1 engine-out frame, fuel, and cooling. Not yet added.",
+        src: "/images/placeholders/dyno-rev1-frame-build.svg",
+        alt: "Placeholder drawing labeled Rev 1 — Frame build",
+        caption: "Rev 1 aluminum extrusion frame during the build.",
       },
       {
         kind: "Photo",
-        caption: "Rev 2 mechanical setup. Not yet added.",
+        src: "/images/placeholders/dyno-rev1-water-pump-wiring.svg",
+        alt: "Placeholder drawing labeled Rev 1 — Pump wiring",
+        caption: "Rev 1 water pump wiring.",
       },
       {
         kind: "CAD",
-        caption: "Rev 3 eddy-brake direction, possibly with a roller. Not yet added.",
+        src: "/images/placeholders/dyno-rev1-electronics-board.svg",
+        alt: "Placeholder drawing labeled Rev 1 — Electronics",
+        caption: "Rev 1 electronics board.",
       },
       {
-        kind: "Write-up",
-        caption: "Revision notes. Not yet added.",
+        kind: "Photo",
+        src: "/images/placeholders/dyno-rev1-mechanical.svg",
+        alt: "Placeholder drawing labeled Rev 1 — Mechanical",
+        caption: "Rev 1 mechanical assembly.",
       },
     ],
   },
@@ -172,50 +186,55 @@ export const projects: Project[] = [
     title: "FSAE Modular Air Intake",
     sheet: "03",
     featured: true,
-    summary:
-      "Rib-reinforced plenum and an O-ring seal so runner length can change in a test. The seal has not seen much use, because there has not been a working dyno.",
-    role: "Intake/Dyno Lead",
+    summary: "Air intake system for a naturally aspirated Formula SAE car.",
+    role: "Intake Lead",
     organization: "Brown Formula Racing",
     location: "Providence, RI",
-    dates: "June 2025 – present",
+    dates: "June 2025 – May 2026",
     tools: ["ANSYS Mechanical", "Ricardo WAVE"],
     overview: [
-      "Two pieces define this intake. I structurally reinforced the plenum with ribbing, checked in ANSYS Mechanical, and I designed an O-ring sealing interface between the plenum and the runners so runner length can change during a test. That seal has not been used much, because there has not been a working dyno.",
-      "The pressure chamber is also split so volume and bellmouth geometry can be tested on their own. Steady-state and transient throttle-response studies in Ricardo WAVE compared plenum volume and runner length, and the ANSYS work included vibration across the engine operating range. The skills list names that 1D package Realis WAVE.",
+      "The intake controls how air enters the engine. Geometry can help the engine breathe better at competition operating points and make more power on track.",
     ],
     roleNotes: [
-      "As Intake/Dyno Lead I owned the intake decisions and the parts that came out of them: the ribbed plenum reinforcement, the O-ring joint for changing runner length, the split chamber, and the WAVE comparisons of volume and length.",
-      "I did not get a real test campaign on the seal. The interface is built for dyno work, and it waited on a dyno that could run. The dynamometer revisions are on their own page.",
+      "I designed and manufactured a rules-compliant system: the throttle body, restrictor, plenum, and runners.",
     ],
     approach: [
-      "Reinforce the plenum with ribbing and check the structure in ANSYS Mechanical, including vibration-induced failure across the engine operating range.",
-      "Design an O-ring sealing interface between the plenum and the runners so length can change during a test.",
-      "Split the pressure chamber so volume and bellmouth geometry can be tested as their own variables.",
-      "Run Ricardo WAVE steady-state and transient throttle-response simulations to compare plenum volume and runner length.",
+      "Run Realis WAVE simulations for how runner length and plenum volume affect engine outputs.",
+      "Choose lengths and volumes from those simulations.",
+      "Package the intake from those choices.",
+      "Iterate the plenum to minimize vacuum compliance within the rules.",
     ],
     outcomes: [
-      "Plenum structurally reinforced with ribbing validated in ANSYS Mechanical, including a vibration check across the operating range.",
-      "O-ring sealing interface between the plenum and the runners, so runner length can change in a test. It was not used much, because there was not a working dyno.",
-      "Pressure chamber split for volume and bellmouth testing once a dyno can hold a run.",
-      "WAVE comparisons of plenum volume and runner length, steady-state and transient. No dyno measurements sit behind those trades yet.",
+      "Plenum ribbing validated in ANSYS Mechanical.",
+      "An O-ring seal between the plenum and the runners, so runner length and plenum volume can change in a session. It saw little use without a working dyno.",
+      "Manufactured and run on the 2026 car, Ever True, at the Michigan IC competition.",
     ],
-    mediaNote: "CAD, ANSYS and WAVE plots, and photos will be added here.",
+    mediaNote:
+      "Each frame is a placeholder. Replace the file at the same path under public/images/placeholders/.",
     media: [
       {
         kind: "CAD",
-        caption: "Ribbed plenum structure. Not yet added.",
+        src: "/images/placeholders/intake-ribbed-plenum.svg",
+        alt: "Placeholder drawing labeled CAD — Ribbed plenum",
+        caption: "Ribbed plenum.",
       },
       {
         kind: "CAD",
-        caption: "O-ring sealing interface between the plenum and the runners. Not yet added.",
+        src: "/images/placeholders/intake-oring-runners.svg",
+        alt: "Placeholder drawing labeled CAD — O-ring runners",
+        caption: "O-ring seal between the plenum and the runners.",
+      },
+      {
+        kind: "FEA",
+        src: "/images/placeholders/intake-ansys.svg",
+        alt: "Placeholder drawing labeled ANSYS — Plenum ribbing",
+        caption: "ANSYS Mechanical ribbing and vibration results.",
       },
       {
         kind: "Simulation",
-        caption: "ANSYS Mechanical ribbing and vibration results. Not yet added.",
-      },
-      {
-        kind: "Simulation",
-        caption: "Ricardo WAVE plenum volume and runner length comparisons. Not yet added.",
+        src: "/images/placeholders/intake-wave.svg",
+        alt: "Placeholder drawing labeled WAVE — Volume and length",
+        caption: "Realis WAVE study of plenum volume and runner length.",
       },
     ],
   },
