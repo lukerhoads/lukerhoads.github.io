@@ -1,11 +1,14 @@
 ---
-import { site } from "../data/content";
+import { getHome } from "../lib/site";
+
+const home = await getHome();
+const { name, email } = home.data;
 ---
 
 <footer class="site-footer">
-  <p class="footer-name">{site.name}</p>
+  <p class="footer-name">{name}</p>
   <p>
-    <a href={`mailto:${site.email}`}>{site.email}</a>
+    <a href={`mailto:${email}`}>{email}</a>
   </p>
-  <p class="footer-meta">{site.school} · {site.degree}</p>
+  <p class="footer-meta">© {name} 2026</p>
 </footer>

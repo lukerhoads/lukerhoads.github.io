@@ -1,50 +1,47 @@
 ---
 import Layout from "./Layout.astro";
-import type { Project } from "../data/content";
+import type { CollectionEntry, MarkdownHeading } from "astro:content";
+import { projectImages } from "../lib/project-images";
 
 interface Props {
-  project: Project;
+  project: CollectionEntry<"projects">;
+  headings: MarkdownHeading[];
 }
 
-const { project } = Astro.props;
+const { project, headings } = Astro.props;
+const { title, summary, role, organization, tools, mediaNote, media } = project.data;
+const images = projectImages(project.id, media);
+const prose = headings.filter((heading) => heading.depth === 2);
+const mediaIndex = String(prose.length + 1).padStart(2, "0");
 
 const facts = [
-  ["Role", project.role],
-  ["Organization", project.organization],
-  ["Location", project.location],
-  ["Dates", project.dates],
+  ["Role", role],
+  ["Organization", organization],
+  ["Location", project.data.location],
+  ["Dates", project.data.dates],
 ].filter((entry): entry is [string, string] => Boolean(entry[1]));
 
-const sections = [
-  { id: "overview", index: "01", title: "Overview" },
-  { id: "role", index: "02", title: "Role" },
-  { id: "approach", index: "03", title: "Approach" },
-  { id: "outcomes", index: "04", title: "Outcomes" },
-  { id: "media", index: "05", title: "Media" },
-];
-
-const description = `${project.title}. ${project.role}${project.organization ? `, ${project.organization}` : ""}. ${project.summary}`;
+const description = `${title}. ${role}${organization ? `, ${organization}` : ""}. ${summary}`;
 ---
 
-<Layout title={`${project.title} · Luke Rhoads`} description={description}>
+<Layout title={`${title} · Luke Rhoads`} description={description}>
   <article class="project">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span aria-hidden="true">/</span>
       <a href="/projects">Projects</a>
       <span aria-hidden="true">/</span>
-      <span aria-current="page">{project.title}</span>
+      <span aria-current="page">{title}</span>
     </nav>
 
     <header class="title-block">
       <div class="title-grid">
         <div>
-          <p class="sheet-no">Sheet {project.sheet}{project.featured ? " · Featured" : ""}</p>
-          <h1>{project.title}</h1>
-          <p class="lede">{project.summary}</p>
+          <h1>{title}</h1>
+          <p class="lede">{summary}</p>
           {
-            project.tools.length > 0 && (
-              <p class="tool-line">Scope: {project.tools.join(" · ")}</p>
+            tools.length > 0 && (
+              <p class="tool-line">Scope: {tools.join(" · ")}</p>
             )
           }
         </div>
@@ -63,46 +60,31 @@ const description = `${project.title}. ${project.role}${project.organization ? `
 
     <div class="project-layout">
       <nav class="toc" aria-label="On this page">
-        {sections.map((section) => <a href={`#${section.id}`}>{section.title}</a>)}
+        {prose.map((heading) => <a href={`#${heading.slug}`}>{heading.text}</a>)}
+        <a href="#media">Media</a>
       </nav>
 
       <div>
-        <section class="block" id="overview" aria-labelledby="overview-heading">
-          <h2 id="overview-heading"><span>01</span>Overview</h2>
-          {project.overview.map((paragraph) => <p>{paragraph}</p>)}
-        </section>
-
-        <section class="block" id="role" aria-labelledby="role-heading">
-          <h2 id="role-heading"><span>02</span>Role</h2>
-          <div class="role-notes">
-            {project.roleNotes.map((paragraph) => <p>{paragraph}</p>)}
-          </div>
-        </section>
-
-        <section class="block" id="approach" aria-labelledby="approach-heading">
-          <h2 id="approach-heading"><span>03</span>Approach</h2>
-          <ul>
-            {project.approach.map((item) => <li>{item}</li>)}
-          </ul>
-        </section>
-
-        <section class="block" id="outcomes" aria-labelledby="outcomes-heading">
-          <h2 id="outcomes-heading"><span>04</span>Outcomes</h2>
-          <ul>
-            {project.outcomes.map((item) => <li>{item}</li>)}
-          </ul>
-        </section>
+        <div class="project-body">
+          <slot />
+        </div>
 
         <section class="block" id="media" aria-labelledby="media-heading">
-          <h2 id="media-heading"><span>05</span>Media</h2>
-          <p class="media-note">{project.mediaNote}</p>
+          <h2 id="media-heading"><span>{mediaIndex}</span>Media</h2>
+          {mediaNote && <p class="media-note">{mediaNote}</p>}
           <div class="media-grid">
             {
-              project.media.map((slot) => (
+              images.map((slot) => (
                 <figure>
-                  <div class="placeholder" aria-hidden="true">
-                    <span>{slot.kind} placeholder</span>
-                  </div>
+                  {
+                    slot.src ? (
+                      <img src={slot.src} alt={slot.alt} />
+                    ) : (
+                      <div class="placeholder" aria-hidden="true">
+                        <span>{slot.kind} placeholder</span>
+                      </div>
+                    )
+                  }
                   <figcaption>
                     <strong>{slot.kind}.</strong> {slot.caption}
                   </figcaption>

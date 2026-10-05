@@ -1,22 +1,38 @@
 ---
+import { render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
-import { site, skills } from "../data/content";
+import { getHome } from "../lib/site";
+
+const home = await getHome();
+const { Content } = await render(home);
+const site = home.data;
 ---
 
-<Layout
-  title="Luke Rhoads · Mechanical Engineering"
-  description="Mechanical engineering portfolio of Luke Rhoads, Brown University Sc.B. student. Experience at SpaceX, Brown Formula Racing, Chicago Cutting Die, and the PROBE Lab."
->
+<Layout title="Luke Rhoads · Engineering Portfolio" description={site.description}>
   <header class="hero">
     <p class="kicker">
-      <span>Portfolio</span>
-      <span>Mechanical engineering</span>
+      <span>Engineering Portfolio</span>
     </p>
     <div class="hero-grid">
-      <div>
-        <h1>{site.name}</h1>
-        <p class="lede">{site.lede}</p>
+      <div class="hero-main">
+        <figure class="hero-photo">
+          {
+            site.portrait ? (
+              <img src={site.portrait} alt={`Portrait of ${site.name}`} />
+            ) : (
+              <div class="placeholder hero-placeholder" aria-hidden="true">
+                <span>Photo</span>
+              </div>
+            )
+          }
+        </figure>
+        <div>
+          <h1>{site.name}</h1>
+          <div class="hero-copy">
+            <Content />
+          </div>
+        </div>
       </div>
       <aside class="titleblock" aria-labelledby="education-heading">
         <h2 id="education-heading" class="visually-hidden">Education</h2>
@@ -24,14 +40,10 @@ import { site, skills } from "../data/content";
         <p class="titleblock-org">{site.school}</p>
         <p class="titleblock-deg">{site.degree}</p>
         <dl class="spec-list">
-          <dt>GPA</dt>
-          <dd>{site.gpa}</dd>
           <dt>Graduation</dt>
           <dd>{site.graduation}</dd>
           <dt>Location</dt>
           <dd>{site.location}</dd>
-          <dt>Prior</dt>
-          <dd>{site.priorSchool}</dd>
           <dt>Email</dt>
           <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
         </dl>
@@ -44,14 +56,9 @@ import { site, skills } from "../data/content";
       <span class="section-index">01</span>
       <h2 id="skills-heading">Skills</h2>
     </div>
-    <p>
-      Technical skills, listed as {skills.qualifier.toLowerCase()}. Formula racing and the
-      windsurfing/SUP board are the project work recorded alongside them.
-    </p>
     <ul class="tool-list">
-      {skills.tools.map((tool) => <li>{tool}</li>)}
+      {site.skills.map((tool) => <li>{tool}</li>)}
     </ul>
-    <p class="language">Language: {skills.language}</p>
   </section>
 
   <section class="section" aria-labelledby="projects-heading">

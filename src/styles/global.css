@@ -223,7 +223,6 @@ main:focus {
 .section-index,
 .meta,
 .tool-line,
-.sheet-no,
 .footer-meta,
 .card-kicker,
 .placeholder span,
@@ -265,10 +264,43 @@ main:focus {
   min-width: 0;
 }
 
+.hero-main {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 1.25rem 1.5rem;
+  align-items: start;
+}
+
+.hero-photo {
+  margin: 0;
+}
+
+.hero-photo img,
+.hero-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+
+.experience,
+.hero-copy ul {
+  margin: 0.85rem 0 0;
+  padding-left: 1.15rem;
+  max-width: min(var(--measure), 100%);
+  color: var(--slate);
+}
+
+.experience li,
+.hero-copy li {
+  margin: 0.35rem 0;
+}
+
 .lede,
 .page-intro p,
 .block p,
-.role-notes p {
+.role-notes p,
+.hero-copy p,
+.project-body p {
   max-width: min(var(--measure), 100%);
   margin-top: 1rem;
   color: var(--slate);
@@ -347,7 +379,8 @@ main:focus {
 }
 
 .section-heading h2,
-.block h2 {
+.block h2,
+.project-body h2 {
   font-size: 1.55rem;
 }
 
@@ -357,18 +390,46 @@ figcaption {
   color: var(--slate);
 }
 
-.block ul {
+.block ul,
+.project-body ul {
   margin: 0.3rem 0 0;
   padding-left: 1.15rem;
 }
 
-.block li {
+.block li,
+.project-body li {
   margin: 0.4rem 0;
 }
 
-.skills p {
-  max-width: var(--measure);
-  color: var(--slate);
+.project-body {
+  counter-reset: section;
+}
+
+.project-body h2 {
+  counter-increment: section;
+  scroll-margin-top: calc(var(--header-h) + 0.8rem);
+  margin: 1.75rem 0 0.35rem;
+  padding-top: 1.05rem;
+  border-top: 1px solid var(--line);
+}
+
+.project-body h2:first-child {
+  margin-top: 0;
+}
+
+.project-body h2::before {
+  content: counter(section, decimal-leading-zero);
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.skills .tool-list {
+  margin-top: 0;
 }
 
 .tool-list {
@@ -385,11 +446,6 @@ figcaption {
   background: color-mix(in srgb, var(--paper-strong) 90%, transparent);
   padding: 0.35rem 0.6rem;
   font-size: 0.95rem;
-}
-
-.language {
-  margin-top: 0.9rem;
-  color: var(--slate);
 }
 
 .card-grid {
@@ -476,14 +532,6 @@ figcaption {
   font-size: clamp(2.1rem, 4.5vw, 3.4rem);
 }
 
-.sheet-no {
-  color: var(--muted);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.55rem;
-}
-
 .tool-line {
   margin-top: 1rem;
   color: var(--muted);
@@ -568,6 +616,14 @@ figcaption {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+.media-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line-strong);
+  background: var(--paper-strong);
 }
 
 .placeholder {
@@ -688,6 +744,14 @@ figcaption strong {
   .page-intro h1,
   .title-block h1 {
     max-width: none;
+  }
+
+  .hero-main {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-photo {
+    max-width: 11rem;
   }
 }
 

@@ -1,28 +1,28 @@
 ---
-import { projects } from "../data/content";
+import { getProjects } from "../lib/site";
 
 interface Props {
   titleLevel?: 2 | 3;
 }
 
 const { titleLevel = 3 } = Astro.props;
+const projects = await getProjects();
 ---
 
 <div class="card-grid">
   {
     projects.map((project) => (
-      <a class="card" href={`/projects/${project.slug}`}>
+      <a class="card" href={`/projects/${project.id}`}>
         <p class="card-kicker">
-          <span>Sheet {project.sheet}</span>
-          <span>{project.featured ? "Featured" : "Project"}</span>
+          <span>{project.data.featured ? "Featured" : "Project"}</span>
         </p>
-        {titleLevel === 2 ? <h2>{project.title}</h2> : <h3>{project.title}</h3>}
+        {titleLevel === 2 ? <h2>{project.data.title}</h2> : <h3>{project.data.title}</h3>}
         <p class="card-role">
-          {project.role}
-          {project.organization ? ` · ${project.organization}` : ""}
+          {project.data.role}
+          {project.data.organization ? ` · ${project.data.organization}` : ""}
         </p>
-        {project.dates && <p class="meta">{project.dates}</p>}
-        <p class="card-summary">{project.summary}</p>
+        {project.data.dates && <p class="meta">{project.data.dates}</p>}
+        <p class="card-summary">{project.data.summary}</p>
         <p class="card-cta">View project</p>
       </a>
     ))

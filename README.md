@@ -38,7 +38,7 @@ npm run dev
 ```
 
 5. The terminal prints a local address, usually `http://localhost:4321`. Ctrl-click or Cmd-click that URL. You can also open the Command Palette (**Ctrl+Shift+P** / **Cmd+Shift+P**), run **Simple Browser: Show**, and enter the same address.
-6. Edit files in `src/` and save. The page reloads on its own.
+6. Edit Markdown in `src/content/` and save. The home page is `src/content/home.md`. Each project is a file in `src/content/projects/`. Photos for a project go in `public/images/` followed by that project's folder name. The page reloads on its own.
 7. Stop the server with **Ctrl+C** in that terminal.
 
 Node.js 20 or newer is required. If `npm` is not found, install Node from [nodejs.org](https://nodejs.org/) and open a new terminal.
