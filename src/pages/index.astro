@@ -16,7 +16,10 @@ import { site, skills } from "../data/content";
     <div class="hero-grid">
       <div>
         <h1>{site.name}</h1>
-        <p class="lede">{site.lede}</p>
+        <p class="lede">{site.intro}</p>
+        <ul class="past-roles">
+          {site.experience.map((item) => <li>{item}</li>)}
+        </ul>
       </div>
       <aside class="titleblock" aria-labelledby="education-heading">
         <h2 id="education-heading" class="visually-hidden">Education</h2>
@@ -44,10 +47,7 @@ import { site, skills } from "../data/content";
       <span class="section-index">01</span>
       <h2 id="skills-heading">Skills</h2>
     </div>
-    <p>
-      Technical skills, listed as {skills.qualifier.toLowerCase()}. Formula racing and the
-      windsurfing/SUP board are the project work recorded alongside them.
-    </p>
+    <p>Technical skills, listed as {skills.qualifier.toLowerCase()}.</p>
     <ul class="tool-list">
       {skills.tools.map((tool) => <li>{tool}</li>)}
     </ul>

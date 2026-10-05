@@ -81,9 +81,9 @@ const description = `${project.title}. ${project.role}${project.organization ? `
 
         <section class="block" id="approach" aria-labelledby="approach-heading">
           <h2 id="approach-heading"><span>03</span>Approach</h2>
-          <ul>
+          <ol class="roadmap">
             {project.approach.map((item) => <li>{item}</li>)}
-          </ul>
+          </ol>
         </section>
 
         <section class="block" id="outcomes" aria-labelledby="outcomes-heading">
@@ -100,9 +100,13 @@ const description = `${project.title}. ${project.role}${project.organization ? `
             {
               project.media.map((slot) => (
                 <figure>
-                  <div class="placeholder" aria-hidden="true">
-                    <span>{slot.kind} placeholder</span>
-                  </div>
+                  {slot.src ? (
+                    <img class="media-photo" src={slot.src} alt={slot.alt ?? slot.caption} />
+                  ) : (
+                    <div class="placeholder" aria-hidden="true">
+                      <span>{slot.kind} placeholder</span>
+                    </div>
+                  )}
                   <figcaption>
                     <strong>{slot.kind}.</strong> {slot.caption}
                   </figcaption>
