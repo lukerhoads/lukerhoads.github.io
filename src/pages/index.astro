@@ -1,24 +1,133 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
+import Layout from "../layouts/Layout.astro";
+import ProjectGrid from "../components/ProjectGrid.astro";
+import { experience, site, skills } from "../data/content";
 ---
 
-<Layout title="Design Portfolio" description="A collection of my recent work.">
-  <section class="projects-section">
-    <div class="container">
-      <ProjectGrid />
+<Layout
+  title="Luke Rhoads · Mechanical Engineering"
+  description="Mechanical engineering portfolio of Luke Rhoads, Brown University Sc.B. student. Experience at SpaceX, Brown Formula Racing, Chicago Cutting Die, and the PROBE Lab."
+>
+  <header class="hero">
+    <p class="kicker">
+      <span>Portfolio</span>
+      <span>Mechanical engineering</span>
+    </p>
+    <div class="hero-grid">
+      <div>
+        <h1>{site.name}</h1>
+        <p class="lede">{site.lede}</p>
+      </div>
+      <aside class="titleblock" aria-labelledby="education-heading">
+        <h2 id="education-heading" class="visually-hidden">Education</h2>
+        <p class="titleblock-label">Education</p>
+        <p class="titleblock-org">{site.school}</p>
+        <p class="titleblock-deg">{site.degree}</p>
+        <dl class="spec-list">
+          <dt>GPA</dt>
+          <dd>{site.gpa}</dd>
+          <dt>Graduation</dt>
+          <dd>{site.graduation}</dd>
+          <dt>Location</dt>
+          <dd>{site.location}</dd>
+          <dt>Prior</dt>
+          <dd>{site.priorSchool}</dd>
+          <dt>Email</dt>
+          <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+        </dl>
+      </aside>
     </div>
+  </header>
+
+  <section class="section" aria-labelledby="experience-heading">
+    <div class="section-heading">
+      <span class="section-index">01</span>
+      <h2 id="experience-heading">Experience</h2>
+    </div>
+    <div class="experience">
+      {
+        experience.map((job) => (
+          <article class="job">
+            <div class="job-meta">
+              <h3>{job.organization}</h3>
+              <p class="job-title">{job.title}</p>
+              <p class="job-place">{job.location}</p>
+              <p class="job-dates">{job.dates}</p>
+            </div>
+            <div class="job-body">
+              {job.groups.map((group) => (
+                <div class="job-group">
+                  {group.label && <h4>{group.label}</h4>}
+                  <ul>
+                    {group.bullets.map((bullet) => (
+                      <li>
+                        {bullet.text}
+                        {bullet.children && (
+                          <ul>
+                            {bullet.children.map((child) => (
+                              <li>{child}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                  {group.links && (
+                    <p class="group-links">
+                      {group.links.map((link) => (
+                        <a href={link.href}>{link.label}</a>
+                      ))}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section skills" aria-labelledby="skills-heading">
+    <div class="section-heading">
+      <span class="section-index">02</span>
+      <h2 id="skills-heading">Skills</h2>
+    </div>
+    <p>
+      Technical skills, listed as {skills.qualifier.toLowerCase()}. Formula racing and the
+      windsurfing/SUP board are the project work recorded alongside them.
+    </p>
+    <ul class="tool-list">
+      {skills.tools.map((tool) => <li>{tool}</li>)}
+    </ul>
+    <p class="language">Language: {skills.language}</p>
+  </section>
+
+  <section class="section" aria-labelledby="projects-heading">
+    <div class="section-heading">
+      <span class="section-index">03</span>
+      <h2 id="projects-heading">Projects</h2>
+    </div>
+    <ProjectGrid titleLevel={3} />
   </section>
 </Layout>
 
 <style>
-  .projects-section {
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
     padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
-  @media (max-width: 768px) {
-    .projects-section {
-      padding: 0;
-    }
+  .titleblock .spec-list {
+    border: 0;
+    background: transparent;
+    padding: 0 0 0.55rem;
   }
 </style>

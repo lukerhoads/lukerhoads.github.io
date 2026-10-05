@@ -1,0 +1,37 @@
+# Builds a static preview for pull requests and uploads dist/ as an artifact.
+# This workflow must not deploy. Production GitHub Pages is published only by
+# deploy.yml, which runs on pushes to master.
+name: PR static preview (no deploy)
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload static site
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-site-preview
+          path: dist/
+          if-no-files-found: error
+          retention-days: 14

@@ -1,69 +1,80 @@
 ---
+import { normalizePath, projects } from "../data/content";
+
+const path = normalizePath(Astro.url.pathname);
+const items = [
+  { href: "/", label: "Home", full: "Home" },
+  { href: "/projects", label: "Projects", full: "Projects" },
+  ...projects.map((project) => ({
+    href: `/projects/${project.slug}`,
+    label: project.navLabel,
+    full: project.title,
+  })),
+];
 ---
 
-<nav class="navbar">
-  <div class="nav-container">
-    <a href="/" class="nav-logo">Luke Rhoads</a>
-    <div class="nav-links">
-      <a href="mailto:me@lukerhoads.com" class="nav-link">Contact</a>
-    </div>
+<header class="site-header">
+  <div class="nav-bar">
+    <a class="logo" href="/" aria-label="Luke Rhoads, home">Luke Rhoads</a>
+    <button
+      type="button"
+      class="nav-toggle"
+      aria-expanded="false"
+      aria-controls="site-nav"
+    >
+      Menu
+    </button>
+    <nav id="site-nav" class="nav-links" aria-label="Primary">
+      {
+        items.map((item) => (
+          <a
+            href={item.href}
+            aria-current={path === item.href ? "page" : undefined}
+            aria-label={item.label === item.full ? undefined : item.full}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
   </div>
-</nav>
+</header>
 
-<style>
-  .navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    z-index: 1000;
-  }
-
-  .nav-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #111;
-    text-decoration: none;
-    letter-spacing: -0.02em;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .nav-link {
-    color: #666;
-    text-decoration: none;
-    font-weight: 400;
-    font-size: 0.95rem;
-    transition: color 0.3s ease;
-  }
-
-  .nav-link:hover {
-    color: #111;
-  }
-
-  @media (max-width: 768px) {
-    .nav-links {
-      gap: 1.5rem;
+<noscript>
+  <style>
+    @media (max-width: 859px) {
+      .nav-links {
+        display: flex !important;
+        flex: 1 0 100%;
+        flex-direction: column;
+      }
     }
+  </style>
+</noscript>
 
-    .nav-link {
-      font-size: 0.9rem;
-    }
+<script>
+  const toggle = document.querySelector(".nav-toggle");
+  const nav = document.querySelector("#site-nav");
+
+  if (toggle instanceof HTMLButtonElement && nav instanceof HTMLElement) {
+    const desktop = window.matchMedia("(min-width: 860px)");
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute("aria-expanded", String(open));
+      toggle.textContent = open ? "Close" : "Menu";
+      nav.classList.toggle("is-open", open);
+    };
+
+    toggle.addEventListener("click", () => {
+      setOpen(toggle.getAttribute("aria-expanded") !== "true");
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setOpen(false);
+    });
+
+    desktop.addEventListener("change", () => {
+      if (desktop.matches) setOpen(false);
+    });
   }
-</style>
+</script>

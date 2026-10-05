@@ -4,4 +4,8 @@ import { defineConfig } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
     site: 'https://lukerhoads.com',
+    redirects: {
+        '/contact': '/',
+        '/projects/surfboard': '/projects/windsurfing-sup-board',
+    },
 });
