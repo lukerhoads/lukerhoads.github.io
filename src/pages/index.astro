@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProjectGrid from "../components/ProjectGrid.astro";
-import { experience, site, skills } from "../data/content";
+import { site, skills } from "../data/content";
 ---
 
 <Layout
@@ -39,58 +39,9 @@ import { experience, site, skills } from "../data/content";
     </div>
   </header>
 
-  <section class="section" aria-labelledby="experience-heading">
-    <div class="section-heading">
-      <span class="section-index">01</span>
-      <h2 id="experience-heading">Experience</h2>
-    </div>
-    <div class="experience">
-      {
-        experience.map((job) => (
-          <article class="job">
-            <div class="job-meta">
-              <h3>{job.organization}</h3>
-              <p class="job-title">{job.title}</p>
-              <p class="job-place">{job.location}</p>
-              <p class="job-dates">{job.dates}</p>
-            </div>
-            <div class="job-body">
-              {job.groups.map((group) => (
-                <div class="job-group">
-                  {group.label && <h4>{group.label}</h4>}
-                  <ul>
-                    {group.bullets.map((bullet) => (
-                      <li>
-                        {bullet.text}
-                        {bullet.children && (
-                          <ul>
-                            {bullet.children.map((child) => (
-                              <li>{child}</li>
-                            ))}
-                          </ul>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
-                  {group.links && (
-                    <p class="group-links">
-                      {group.links.map((link) => (
-                        <a href={link.href}>{link.label}</a>
-                      ))}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </article>
-        ))
-      }
-    </div>
-  </section>
-
   <section class="section skills" aria-labelledby="skills-heading">
     <div class="section-heading">
-      <span class="section-index">02</span>
+      <span class="section-index">01</span>
       <h2 id="skills-heading">Skills</h2>
     </div>
     <p>
@@ -105,7 +56,7 @@ import { experience, site, skills } from "../data/content";
 
   <section class="section" aria-labelledby="projects-heading">
     <div class="section-heading">
-      <span class="section-index">03</span>
+      <span class="section-index">02</span>
       <h2 id="projects-heading">Projects</h2>
     </div>
     <ProjectGrid titleLevel={3} />

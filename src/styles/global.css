@@ -185,23 +185,6 @@ a:hover {
   text-underline-offset: 0.18em;
 }
 
-.nav-toggle {
-  display: none;
-  cursor: pointer;
-  min-height: 2.75rem;
-  min-width: 2.75rem;
-  align-items: center;
-  justify-content: center;
-  padding: 0 0.85rem;
-  border: 1px solid var(--line-strong);
-  background: var(--paper-strong);
-  color: var(--ink);
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 .nav-links {
   display: flex;
   flex-direction: row;
@@ -278,8 +261,7 @@ main:focus {
 }
 
 .hero-grid > *,
-.title-grid > *,
-.job > * {
+.title-grid > * {
   min-width: 0;
 }
 
@@ -369,83 +351,19 @@ main:focus {
   font-size: 1.55rem;
 }
 
-.experience {
-  display: flex;
-  flex-direction: column;
-}
-
-.job {
-  display: grid;
-  grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr);
-  gap: 0.75rem 2rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid var(--line);
-}
-
-.job:first-child {
-  border-top: 0;
-  padding-top: 0;
-}
-
-.job h3 {
-  font-size: 1.2rem;
-}
-
-.job-title,
-.job-place,
-.job-dates,
 .card-role,
 .card-summary,
 figcaption {
   color: var(--slate);
 }
 
-.job-title {
-  margin-top: 0.2rem;
-}
-
-.job-place,
-.job-dates {
-  margin-top: 0.15rem;
-  font-size: 0.95rem;
-}
-
-.job-group + .job-group {
-  margin-top: 1.1rem;
-}
-
-.job-group h4 {
-  font-size: 1rem;
-  margin-bottom: 0.35rem;
-}
-
-.job-body ul,
 .block ul {
   margin: 0.3rem 0 0;
   padding-left: 1.15rem;
 }
 
-.job-body li,
 .block li {
   margin: 0.4rem 0;
-}
-
-.job-body li ul {
-  margin-top: 0.25rem;
-}
-
-.group-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.1rem;
-  margin-top: 0.7rem;
-}
-
-.group-links a {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.02em;
-  text-underline-offset: 0.18em;
 }
 
 .skills p {
@@ -725,44 +643,8 @@ figcaption strong {
 }
 
 @media (max-width: 859px) {
-  .nav-bar {
-    flex-wrap: wrap;
-  }
-
-  .logo {
-    margin-right: auto;
-  }
-
-  .nav-toggle {
-    display: inline-flex;
-  }
-
-  .nav-links {
-    display: none;
-    flex: 1 0 100%;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.1rem;
-    padding: 0.35rem 0 0.55rem;
-    border-top: 1px solid var(--line);
-  }
-
-  .nav-links.is-open {
-    display: flex;
-  }
-
-  .nav-links a {
-    min-height: 2.75rem;
-    padding: 0.35rem 0.15rem;
-  }
-
-  .nav-links a[aria-current="page"] {
-    box-shadow: inset 2px 0 0 var(--ink);
-  }
-
   .hero-grid,
   .title-grid,
-  .job,
   .project-layout,
   .card-grid,
   .media-grid {

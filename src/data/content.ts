@@ -12,7 +12,7 @@ export const site = {
   location: "Providence, RI",
   graduation: "Expected graduation December 2027",
   priorSchool: "Highland Park High School, Highland Park, class of 2024",
-  lede: "Mechanical engineering student at Brown University. Prior experience includes a mechanical engineering internship at SpaceX, drivetrain and intake/dyno leadership on Brown Formula Racing, a mechanical engineering internship at Chicago Cutting Die, and research assistance in the PROBE Lab.",
+  lede: "Past experience includes a mechanical engineering internship at SpaceX, drivetrain and intake/dyno leadership on Brown Formula Racing, an internship at Chicago Cutting Die, and research assistance in the PROBE Lab. Interests include Formula SAE and a windsurfing and SUP board built from an EPS foam plug, carbon fiber, and epoxy.",
 };
 
 export const skills = {
@@ -29,25 +29,6 @@ export const skills = {
   language: "English",
 };
 
-export interface Bullet {
-  text: string;
-  children?: string[];
-}
-
-export interface ExperienceGroup {
-  label?: string;
-  links?: { href: string; label: string }[];
-  bullets: Bullet[];
-}
-
-export interface Experience {
-  organization: string;
-  title: string;
-  location: string;
-  dates: string;
-  groups: ExperienceGroup[];
-}
-
 export interface MediaSlot {
   kind: "Photo" | "CAD" | "Simulation" | "Write-up";
   caption: string;
@@ -56,7 +37,6 @@ export interface MediaSlot {
 export interface Project {
   slug: string;
   title: string;
-  navLabel: string;
   sheet: string;
   featured: boolean;
   summary: string;
@@ -73,15 +53,10 @@ export interface Project {
   media: MediaSlot[];
 }
 
-export function projectHref(slug: string): string {
-  return `/projects/${slug}`;
-}
-
 export const projects: Project[] = [
   {
     slug: "fsae-drivetrain",
     title: "FSAE Drivetrain",
-    navLabel: "Drivetrain",
     sheet: "01",
     featured: true,
     summary:
@@ -138,7 +113,6 @@ export const projects: Project[] = [
   {
     slug: "fsae-dynamometer",
     title: "FSAE Dynamometer",
-    navLabel: "Dyno",
     sheet: "02",
     featured: true,
     summary:
@@ -196,7 +170,6 @@ export const projects: Project[] = [
   {
     slug: "fsae-air-intake",
     title: "FSAE Modular Air Intake",
-    navLabel: "Intake",
     sheet: "03",
     featured: true,
     summary:
@@ -255,7 +228,6 @@ export const projects: Project[] = [
   {
     slug: "windsurfing-sup-board",
     title: "Windsurfing/SUP Board",
-    navLabel: "Board",
     sheet: "04",
     featured: false,
     summary:
@@ -297,135 +269,6 @@ export const projects: Project[] = [
       {
         kind: "Write-up",
         caption: "Extended process notes. Not yet added.",
-      },
-    ],
-  },
-];
-
-function openProject(slug: string): { href: string; label: string } {
-  const project = projects.find((item) => item.slug === slug);
-  if (!project) {
-    throw new Error(`Unknown project slug: ${slug}`);
-  }
-  return {
-    href: projectHref(project.slug),
-    label: `Open ${project.title}`,
-  };
-}
-
-export const experience: Experience[] = [
-  {
-    organization: "SpaceX",
-    title: "Mechanical Engineering Intern",
-    location: "Starbase, TX",
-    dates: "May 2026 – August 2026",
-    groups: [
-      {
-        bullets: [
-          {
-            text: "Reduced payload attach times by 49% in labor hours and $60k per ship by introducing temporary work access platforms",
-          },
-          {
-            text: "Designed permanent work access platforms for payload attach operations and tension connections for safe payload transport",
-          },
-          {
-            text: "Designed and implemented bumpers to prevent damage to climber tools when fully retracted",
-          },
-          {
-            text: "Iterated quickly to design hardware and processes for payload build and attach for upcoming Gigabay operations",
-          },
-          {
-            text: "Collaborated with build team to verify safety of test article operations taking place on payload transport tool",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    organization: "Brown Formula Racing",
-    title: "Drivetrain Lead and Intake/Dyno Lead",
-    location: "Providence, RI",
-    dates: "September 2024 – Present",
-    groups: [
-      {
-        label: "Drivetrain Lead (October 2024 – May 2025)",
-        links: [openProject("fsae-drivetrain")],
-        bullets: [
-          {
-            text: "Designed a rear differential mounting system using Solidworks, iterating for minimum weight under calculated loading conditions",
-          },
-          {
-            text: "Manufactured rear-differential mounting system and chain tension adjustment system components using Fusion 360 CAM and CNC milling",
-          },
-          {
-            text: "Collaborated with suspension and chassis teams to successfully integrate the drivetrain while ensuring driveshaft clearance across all chain tensioning configurations",
-          },
-          {
-            text: "Ran point-mass lap simulations in MATLAB to justify final drive ratio selection",
-          },
-        ],
-      },
-      {
-        label: "Intake/Dyno Lead (June 2025 – May 2026)",
-        links: [openProject("fsae-dynamometer"), openProject("fsae-air-intake")],
-        bullets: [
-          {
-            text: "Designed and manufactured a water brake engine dynamometer that will be used to validate steady-state powertrain simulations and quantify engine performance",
-            children: [
-              "Designed and fabricated an aluminum extrusion frame adhering to strict budget constraints",
-              "Collaborated with the electrical subteam to integrate an engine wiring harness",
-              "Implemented a gear-reduction system enabling testing across the full range of engine loading conditions",
-              "Debugged insufficient flow rate by integrating a higher capacity water pump",
-              "Rewired the load-control motor and currently tuning a PID control system to match engine load",
-            ],
-          },
-          {
-            text: "Designed a modular air intake system",
-            children: [
-              "Optimized intake mass using ribbing strategies validated in ANSYS Mechanical",
-              "Verified structural integrity against vibration-induced failure across the engine operating range using ANSYS Mechanical",
-              "Split the pressure chamber enabling volume and bellmouth testing",
-              "Integrated a static sealing mechanism enabling hot-swappable runner lengths for dynamometer testing",
-              "Ran steady-state and transient throttle-response simulations with Ricardo WAVE to quantify plenum volume and runner length tradeoffs",
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  {
-    organization: "Chicago Cutting Die",
-    title: "Mechanical Engineering Intern",
-    location: "Northbrook, IL",
-    dates: "May 2025 – August 2025",
-    groups: [
-      {
-        bullets: [
-          {
-            text: "Digitized tooling assembly designs using SolidWorks for manufacturing documentation",
-          },
-          {
-            text: "Programmed CNC milling operations for tool and die manufacturing using MasterCAM",
-          },
-          {
-            text: "Managed incoming work requests while synchronizing digital and physical work records",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    organization: "PROBE Lab",
-    title: "Research Assistant",
-    location: "Providence, RI",
-    dates: "September 2025 – December 2025",
-    groups: [
-      {
-        bullets: [
-          {
-            text: "Designed and manufactured optical mounting system to improve mechanical stability in nanoscale 3D printing",
-          },
-        ],
       },
     ],
   },
