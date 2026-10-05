@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img">
+  <defs>
+    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M 28 0 L 0 0 0 28" fill="none" stroke="#d5dde3" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="1000" fill="#f6f7f4"/>
+  <rect width="800" height="1000" fill="url(#grid)"/>
+  <rect x="18" y="18" width="764" height="964" fill="none" stroke="#7d8b99" stroke-width="2"/>
+  <rect x="26" y="26" width="748" height="948" fill="none" stroke="#7d8b99" stroke-width="1"/>
+  <g stroke="#3a4856" stroke-width="2" fill="none">
+    <path d="M 18 46 L 18 18 L 46 18"/>
+    <path d="M 754 18 L 782 18 L 782 46"/>
+    <path d="M 18 954 L 18 982 L 46 982"/>
+    <path d="M 754 982 L 782 982 L 782 954"/>
+  </g>
+  
+  <g fill="none" stroke="#3a4856" stroke-width="3">
+    <circle cx="400" cy="340" r="110"/>
+    <path d="M 230 760 C 250 600, 310 520, 400 520 C 490 520, 550 600, 570 760"/>
+    <path d="M 300 300 C 320 230, 360 210, 400 230" stroke="#7d8b99"/>
+  </g>
+
+  <text x="400.0" y="820" text-anchor="middle" fill="#4e5d6c" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="18" letter-spacing="3">PLACEHOLDER</text>
+  <text x="400.0" y="866" text-anchor="middle" fill="#1b242e" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif" font-size="40" font-weight="500">Portrait</text>
+
+</svg>

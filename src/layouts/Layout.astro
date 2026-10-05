@@ -1,13 +1,20 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import Footer from '../components/Footer.astro';
+import "@fontsource/ibm-plex-sans/latin-400.css";
+import "@fontsource/ibm-plex-sans/latin-500.css";
+import "@fontsource/ibm-plex-sans/latin-600.css";
+import "@fontsource/ibm-plex-mono/latin-400.css";
+import "@fontsource/ibm-plex-mono/latin-500.css";
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
-export interface Props {
+interface Props {
   title: string;
-  description?: string;
+  description: string;
 }
 
-const { title, description = "Industrial Design Portfolio" } = Astro.props;
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -18,82 +25,27 @@ const { title, description = "Industrial Design Portfolio" } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#f6f7f4" />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
     <title>{title}</title>
   </head>
   <body>
-    <Navbar />
-    <main>
-      <slot />
-    </main>
-    <Footer />
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="sheet">
+      <div class="sheet-inner">
+        <div class="ticks" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <Navbar />
+        <main id="content" tabindex="-1">
+          <slot />
+        </main>
+        <Footer />
+      </div>
+    </div>
   </body>
 </html>
-
-<style is:global>
-  @font-face {
-    font-family: 'WF Visual Sans';
-    src: url('https://dhygzobemt712.cloudfront.net/Fonts/VF/WFVisualSansVF.woff2') format('woff2');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    font-family: 'WF Visual Sans';
-    line-height: 1.6;
-  }
-
-  body {
-    margin: 0;
-    padding: 0;
-    background: #ffffff;
-    color: #111;
-    font-size: 16px;
-  }
-
-  main {
-    padding-top: 70px;
-    min-height: 100vh;
-  }
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  p {
-    line-height: 1.7;
-  }
-
-  a {
-    color: #2563eb;
-    text-decoration: none;
-  }
-
-  a:hover {
-    text-decoration: underline;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
-  .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  @media (max-width: 768px) {
-    .container {
-      padding: 0;
-    }
-  }
-</style>

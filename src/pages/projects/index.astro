@@ -1,0 +1,22 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ProjectGrid from "../../components/ProjectGrid.astro";
+---
+
+<Layout
+  title="Projects · Luke Rhoads"
+  description="Luke Rhoads's mechanical engineering projects: FSAE drivetrain, water-brake dynamometer, modular air intake, and a windsurfing/SUP board."
+>
+  <header class="page-intro">
+    <p class="kicker">
+      <span>Sheet index</span>
+      <span>Four projects</span>
+    </p>
+    <h1>Projects</h1>
+    <p>
+      The Formula SAE drivetrain, water-brake dynamometer, and modular air intake are listed
+      first. The windsurfing and SUP board follows.
+    </p>
+  </header>
+  <ProjectGrid titleLevel={2} />
+</Layout>
